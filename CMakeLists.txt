@@ -128,9 +128,10 @@ endif()
 #--------------------
 # DEPENDENCY:  boost
 #--------------------
-find_package(Boost REQUIRED COMPONENTS thread system program_options date_time)
+# Note: boost::system is header-only in Boost 1.69+, so we don't require the system component
+find_package(Boost REQUIRED COMPONENTS thread program_options date_time)
 if (Boost_MINOR_VERSION GREATER 47)
-	find_package(Boost REQUIRED COMPONENTS thread system program_options date_time chrono)
+	find_package(Boost REQUIRED COMPONENTS thread program_options date_time chrono)
 endif ()
 
 #--------------------
